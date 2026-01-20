@@ -1,0 +1,42 @@
+/* .gridBox .cover  {position: absolute; top: 0;bottom: 0;right: 0; left: 0; background-color: #b89569;} */
+
+
+.mainpage {position: relative; height: 100%;}
+.mainpage .gridWrap {gap: 0; display: grid; transition: all 0.5s cubic-bezier(.65,.05,.36,1);}
+.mainpage .gridWrap .gridBox {max-height: 392px; gap: 0; grid-template-columns: 1fr 1fr; display: grid; transition: all 0.5s cubic-bezier(.65,.05,.36,1);}
+.mainpage .gridWrap .gridBox > div {position: relative;}
+.mainpage .gridWrap .gridBox > div .cover {position: absolute; top: 0; bottom: 0; right: 0; left: 0; background-color: #b89569; transition: all 0.5s cubic-bezier(.65,.05,.36,1); z-index: 10;}
+
+.mainpage .gridWrap .gridBox .textBox {}
+.mainpage .gridWrap .gridBox .textBox .cover {width: 100%;}
+.mainpage .gridWrap .gridBox .textBox .textWrap {position: relative;}
+
+.mainpage .gridWrap .gridBox .imgBox {overflow: hidden;}
+.mainpage .gridWrap .gridBox .imgBox .cover {}
+.mainpage .gridWrap .gridBox .imgBox figure {position: relative; z-index: 0;}
+.mainpage .gridWrap .gridBox .imgBox figure img {width: 100%; height: 100%; object-fit: cover; background-position: center center; background-repeat: no-repeat; transform: scale(1.15); transition: all 0.5s cubic-bezier(.65,.05,.36,1);}
+
+/* section02 예외 */
+.mainpage .gridWrap .gridBox:nth-child(2) {grid-template-columns: 13fr 14fr;}
+.mainpage .gridWrap .gridBox:nth-child(2) .imgBox {grid-row: 1; grid-column: 1;}
+.mainpage .gridWrap .gridBox:nth-child(2) .textBox {grid-row: 1; grid-column: 2;}
+
+/* active */
+.fade-enter .mainpage .gridWrap.active,
+.fade-enter-done .mainpage .gridWrap.active {gap: calc(var(--spacing) * 5);}
+.fade-enter .mainpage .gridWrap.active .gridBox,
+.fade-enter-done .mainpage .gridWrap.active .gridBox {gap: calc(var(--spacing) * 5);}
+.fade-enter .mainpage .gridWrap .gridBox.active:nth-child(1),
+.fade-enter-done .mainpage .gridWrap .gridBox.active:nth-child(1) {grid-template-columns: 3fr 2fr;}
+.fade-enter .mainpage .gridWrap .gridBox.active:nth-child(2),
+.fade-enter-done .mainpage .gridWrap .gridBox.active:nth-child(2) {grid-template-columns: 2fr 3fr;}
+.fade-enter .mainpage .gridWrap .gridBox.active:nth-child(3),
+.fade-enter-done .mainpage .gridWrap .gridBox.active:nth-child(3) {grid-template-columns: 7fr 8fr;}
+.fade-enter .mainpage .gridWrap .gridBox .textBox .cover.active,
+.fade-enter-done .mainpage .gridWrap .gridBox .textBox .cover.active {left: auto; z-index: 0;}
+.fade-enter .mainpage .gridWrap .gridBox .imgBox .cover.active.left,
+.fade-enter-done .mainpage .gridWrap .gridBox .imgBox .cover.active.left {left: 100%;}
+.fade-enter .mainpage .gridWrap .gridBox .imgBox .cover.active.right,
+.fade-enter-done .mainpage .gridWrap .gridBox .imgBox .cover.active.right {right: 100%;}
+.fade-enter .mainpage .gridWrap .gridBox .textBox .cover.active,
+.fade-enter-done .mainpage .gridWrap .gridBox .textBox .cover.active {width: 392px;}

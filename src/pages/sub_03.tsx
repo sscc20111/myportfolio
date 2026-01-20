@@ -2,7 +2,7 @@ const sub_03 = () => {
     
 
     return(
-        <div className='sub_03'>
+        <div className='sub_03 subpage'>
             <h1>Sub Page 03</h1>
         </div>
     )
