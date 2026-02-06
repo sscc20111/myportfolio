@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { gsap } from "gsap";
 
 import './App.css'
 
@@ -10,40 +11,37 @@ import { useRef, useState } from 'react';
 function App() {
   const location = useLocation();
   const nodeRef = useRef(null);
-  const [test,settest] = useState(false);
+  const [gridTimeline, setGridTimeline] = useState<gsap.core.Timeline | null>(null);
 
-  const testFunc = () => {
-    console.log('App test');
-    settest(!test);
+  const locationFunc = () => {
+    gridTimeline?.timeScale(1.8).reverse();
+    console.log('test');
+  }
+  const gridTest = (item: gsap.core.Timeline) => {
+    setGridTimeline(item);
   }
 
   return (
     <>
       <div className='body container mx-auto w-full'>
-        <Header />
-              <button style={{position:'absolute', top:'100px', right:'10px', zIndex:1000}} onClick={() =>settest(!test)}>Test {test.toString()}</button>
+        <Header location={locationFunc} />
 
         <div className='contentsBody'>
           <SwitchTransition mode='out-in'>
             <CSSTransition
               key={location.pathname}
-              timeout={{ enter: 300, exit: 1000 }}
+              timeout={{ enter: 500, exit: 1500 }}
               classNames="motion"
               nodeRef={nodeRef}
-              onExit={() => {
-                testFunc();
-                console.log("페이지 나가기 시작");
-              }}
-
             >
-              <div ref={nodeRef} className='router-wrapper fade-enter'>
+              <div ref={nodeRef} className='router-wrapper '>
                 <Routes location={location}>
-                  <Route path="/" element={<Main test={test} />} />
-                  <Route path="/sub1" element={<Sub1 />} />
-                  <Route path="/sub2" element={<Sub2 />} />
-                  <Route path="/sub3" element={<Sub3 />} />
-                  <Route path="/sub4" element={<Sub4 />} />
-                  <Route path="/sub5" element={<Sub5 />} />
+                  <Route path="/" element={<Main gridProps={gridTest} location={locationFunc} />} />
+                  <Route path="/sub1" element={<Sub1 gridProps={gridTest} />} />
+                  <Route path="/sub2" element={<Sub2 gridProps={gridTest} />} />
+                  <Route path="/sub3" element={<Sub3 gridProps={gridTest} />} />
+                  <Route path="/sub4" element={<Sub4 gridProps={gridTest} />} />
+                  <Route path="/sub5" element={<Sub5 gridProps={gridTest} />} />
                 </Routes>
               </div>
             </CSSTransition>
