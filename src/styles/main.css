@@ -1,7 +1,7 @@
 /* .gridBox .cover  {position: absolute; top: 0;bottom: 0;right: 0; left: 0; background-color: #b89569;} */
 
 
-.mainpage {position: relative; height: 100%;}
+.mainpage {position: relative; height: 100%; width: min(1000px, 80vw);}
 .mainpage .gridWrap {gap: 0; display: grid;}
 .mainpage .gridWrap .gridBox {max-height: 392px; gap: 0; grid-template-columns: 1fr 1fr; display: grid;}
 .mainpage .gridWrap .gridBox > div {position: relative;}

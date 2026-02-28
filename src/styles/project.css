@@ -1,0 +1,56 @@
+.project { position: relative; width: min(1500px, 80%); height: min(780px, 80vh); --sand: #b89569; --ink: #2b2b2b; --cream: #f4efe7; }
+.project .gridWrap { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.project .gridWrap .projectBox { width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: space-between; gap: clamp(1.5rem, 2vw, 2.5rem); background: #b89569;}
+
+.project .gridWrap .projectBox > div { height: 100%; z-index: 9; opacity: 0;}
+
+.project .gridWrap .projectBox .leftBox { width: 45%; display: flex; align-items: center; justify-content: center; }
+.project .gridWrap .projectBox .leftBox .canvasBox { width: 500px; max-width: 100%; aspect-ratio: 1; }
+
+.project .gridWrap .projectBox .rightBox { width: 55%; }
+.project .gridWrap .projectBox .rightBox .swiper-slide { display: flex; align-items: center; height: 100%; padding-right: 2rem; }
+.project .gridWrap .projectBox .rightBox .swiper-slide .textBox { color: var(--ink); font-family: 'Gmarket'; display: flex; flex-direction: column; }
+.project .gridWrap .projectBox .rightBox .swiper-slide .textBox span.cases {margin-bottom: 1rem; font-size: 1.5rem;}
+.project .gridWrap .projectBox .rightBox .swiper-slide .textBox span.duration { margin-bottom: 2rem; letter-spacing: 0.2rem; text-transform: uppercase; font-size: 0.85rem; line-height: 1.5rem; opacity: 0.6; }
+.project .gridWrap .projectBox .rightBox .swiper-slide .textBox h2 { margin-bottom: 0.5rem; font-size: clamp(2.6rem, 3.8vw, 4.4rem); line-height: 1.1; font-weight: 600; font-family: 'Garamond'; }
+.project .gridWrap .projectBox .rightBox .swiper-slide .textBox h3 { margin-bottom: 1rem; font-size: 1.2rem; font-weight: 500; }
+.project .gridWrap .projectBox .rightBox .swiper-slide .textBox p { margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.7; font-weight: 300; }
+.project .gridWrap .projectBox .rightBox .swiper-slide .textBox .projectStack { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.project .gridWrap .projectBox .rightBox .swiper-slide .textBox .projectStack span { padding: 0.35rem 0.8rem; border: 1px solid rgba(43, 43, 43, 0.25); border-radius: 999px; font-size: 0.85rem; background-color: rgba(255, 255, 255, 0.35); }
+
+.project .gridWrap .projectBox .rightBox .swiper-slide-active .textBox { animation: textRise 0.7s ease both; }
+
+.project .gridWrap .projectBox .navigationBtn { position: absolute; top: 0;bottom: 0;left: 0;right: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 1rem; z-index: 10;}
+.project .gridWrap .projectBox .navigationBtn button { width: 1rem; height: 1rem; border-left: #2b2b2b solid 2px; border-top: 2px solid #2b2b2b; }
+.project .gridWrap .projectBox .navigationBtn button.prevBtn { transform: rotate(-45deg); }
+.project .gridWrap .projectBox .navigationBtn button.nextBtn { transform: rotate(135deg); }
+.project .gridWrap .projectBox .navigationBtn button.disabled { opacity: 0.3; pointer-events: none; }
+
+.navigationBtn button {cursor: pointer;}
+
+@keyframes canvasFadeOut { 
+    0% { opacity: 1; } 
+    100% { opacity: 0; } 
+}
+
+@keyframes canvasFadeIn { 
+    0% { opacity: 0; } 
+    100% { opacity: 1; } 
+}
+
+@keyframes textRise { 
+    0% { transform: translateY(16px); opacity: 0; } 
+    100% { transform: translateY(0); opacity: 1; } 
+}
+
+@media (max-width: 1024px) { 
+    .project .projectBox { height: auto; flex-direction: column; align-items: flex-start; padding: 2rem 0; }
+    .project .leftBox, .project .rightBox { width: 100%; }
+    .project .leftBox { justify-content: flex-start; } 
+}
+
+@media (max-width: 640px) { 
+    .project .gridWrap { height: auto; padding: 4rem 0; }
+    .project .projectBox { width: min(500px, 90vw); }
+    .project .projectTitle { font-size: 2.4rem; } 
+}

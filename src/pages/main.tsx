@@ -9,11 +9,11 @@ import Grid3 from '../assets/images/Grid3.png'
 const images = [Grid1, Grid2, Grid3];
 
 
-const Main = ({gridProps, location}: {gridProps: (timeline: gsap.core.Timeline) => void, location: () => void}) => {
+const Main = ({gridProps, location, ref}: {gridProps: (timeline: gsap.core.Timeline) => void, location: (size: string) => void, ref: React.Ref<HTMLDivElement>}) => {
     const tl = useRef<gsap.core.Timeline | null>(null);
     const randomDelay = (ms: number) => Math.random() * ms / 1000;
     
-    useEffect(() => {
+    const introMotion = () => {
         const gridWrap = document.querySelector(".gridWrap");
         const gridBox = document.querySelectorAll(".gridBox");
         const textCover = document.querySelectorAll(".textBox .cover");
@@ -54,18 +54,21 @@ const Main = ({gridProps, location}: {gridProps: (timeline: gsap.core.Timeline) 
         tl.current.to(imgFigure, { scale: 1, transformOrigin: "center" }, "+=0.3");
 
         gridProps(tl.current);
+    }
+    useEffect(() => {
+        introMotion();
     }, []);
 
     return(
-        <div className='mainpage'>
+        <div className='mainpage motionWrap' ref={ref}>
             <div className="gridWrap">
                 <div className="gridBox">
                     <div className="textBox">
                         <span className="cover"></span>
                         <div className="textWrap">
-                            <NavLink to="/sub1" onClick={location}>About</NavLink>
-                            <NavLink to="/sub2" onClick={location}>Projects</NavLink>
-                            <NavLink to="/sub3" onClick={location}>GuestBook</NavLink>
+                            <NavLink to="/about" onClick={() => location('about')}>About</NavLink>
+                            <NavLink to="/project" onClick={() => location('project')}>Projects</NavLink>
+                            <NavLink to="/guestbook" onClick={() => location('guestbook')}>GuestBook</NavLink>
                         </div>
                     </div>
                     <div className="imgBox">
@@ -81,7 +84,7 @@ const Main = ({gridProps, location}: {gridProps: (timeline: gsap.core.Timeline) 
                         <div className="textWrap">
                             <h2>Front-end</h2>
                             <h2>Development</h2>
-                            <NavLink to="/sub3" onClick={location}>Contact</NavLink>
+                            <NavLink to="/sub4" onClick={() => location('contact')}>Contact</NavLink>
                         </div>
                     </div>
                     <div className="imgBox">
@@ -95,7 +98,7 @@ const Main = ({gridProps, location}: {gridProps: (timeline: gsap.core.Timeline) 
                     <div className="textBox">
                         <span className="cover"></span>
                         <div className="textWrap">
-                            <NavLink to="/sub4" onClick={location}>Making</NavLink>
+                            <NavLink to="/sub5" onClick={() => location('making')}>Making</NavLink>
                             <h2>남민우</h2>
                             <h2>NamMinwoo</h2>
                         </div>

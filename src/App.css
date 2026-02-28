@@ -1,9 +1,24 @@
 @import "tailwindcss";
 
 #root {
-  max-width: 1000px;
-  margin: 0 auto;
+  /* max-width: 1000px; */
+  /* margin: 0 auto; */
+  display: flex; align-items: center; justify-content: center;
   width: 100%;
+  min-height: 100vh;
+}
+.contentsBody {
+	width: 100%;
+	height: 100%;
+}
+
+.router-wrapper {
+	width: 100%; height: 100%;
+	display: flex; align-items: center; justify-content: center;
+}
+
+.motionWrap {
+	width: 100%; height: 100%; overflow: hidden;
 }
 
 

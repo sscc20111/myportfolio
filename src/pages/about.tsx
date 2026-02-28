@@ -2,15 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import type { ReactElement } from 'react';
 import { gsap } from "gsap";
 
-import '../styles/sub2.css';
+import '../styles/about.css';
 import 임시 from '../assets/images/about01.png'
 import icon1 from '../assets/images/email.svg'
 import icon2 from '../assets/images/phone.svg'
 
-const sub_02 = ({gridProps}: {gridProps: (timeline: gsap.core.Timeline) => void}) => {
+const About = ({gridProps, ref}: {gridProps: (timeline: gsap.core.Timeline) => void, ref: React.Ref<HTMLDivElement>}) => {
     const tl = useRef<gsap.core.Timeline | null>(null);
     const tl2 = useRef<gsap.core.Timeline | null>(null);
-    const wrap = document.querySelector("#root");
+    const wrap = document.querySelector(".contentsBody");
 
     const [isAnimating, setIsAnimating] = useState(false);
     const [itemToggle,setItemToggle] = useState(true);
@@ -27,7 +27,7 @@ const sub_02 = ({gridProps}: {gridProps: (timeline: gsap.core.Timeline) => void}
         tl.current = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.inOut" } });
     
         // wrap maxWidth 모션
-        tl.current.to(wrap, {maxWidth: "100%"}, "start");
+        // tl.current.to(wrap, {maxWidth: "100%"}, "start");
         items.forEach((item) => {
             tl.current!.to(item, { backgroundColor: "#c09b6e", borderColor: "#c09b6e" }, "start");
         });
@@ -261,8 +261,8 @@ const sub_02 = ({gridProps}: {gridProps: (timeline: gsap.core.Timeline) => void}
         ));
     };
     return(
-        <div className='sub_02 subpage'>
-            <div className="AboutWrap">
+        <div className='about motionWrap' ref={ref}>
+            <div className="aboutWrap">
                 <div className='itemWrap itemCover'>
                     {renderGridItems(null)}
                 </div>
@@ -277,4 +277,4 @@ const sub_02 = ({gridProps}: {gridProps: (timeline: gsap.core.Timeline) => void}
     )
 };
 
-export default sub_02;
+export default About;
