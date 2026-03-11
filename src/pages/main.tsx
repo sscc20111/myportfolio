@@ -9,7 +9,7 @@ import Grid3 from '../assets/images/Grid3.png'
 const images = [Grid1, Grid2, Grid3];
 
 
-const Main = ({gridProps, location, ref}: {gridProps: (timeline: gsap.core.Timeline) => void, location: (size: string) => void, ref: React.Ref<HTMLDivElement>}) => {
+const Main = ({gridProps, locationFunc, ref}: {gridProps: (timeline: gsap.core.Timeline) => void, locationFunc: (size: string) => void, ref: React.Ref<HTMLDivElement>}) => {
     const tl = useRef<gsap.core.Timeline | null>(null);
     const randomDelay = (ms: number) => Math.random() * ms / 1000;
     
@@ -66,9 +66,9 @@ const Main = ({gridProps, location, ref}: {gridProps: (timeline: gsap.core.Timel
                     <div className="textBox">
                         <span className="cover"></span>
                         <div className="textWrap">
-                            <NavLink to="/about" onClick={() => location('about')}>About</NavLink>
-                            <NavLink to="/project" onClick={() => location('project')}>Projects</NavLink>
-                            <NavLink to="/guestbook" onClick={() => location('guestbook')}>GuestBook</NavLink>
+                            <NavLink to="/about" onClick={() => locationFunc('about')}>About</NavLink>
+                            <NavLink to="/project" onClick={() => locationFunc('project')}>Projects</NavLink>
+                            <NavLink to="/guestbook" onClick={() => locationFunc('guestbook')}>GuestBook</NavLink>
                         </div>
                     </div>
                     <div className="imgBox">
@@ -84,7 +84,7 @@ const Main = ({gridProps, location, ref}: {gridProps: (timeline: gsap.core.Timel
                         <div className="textWrap">
                             <h2>Front-end</h2>
                             <h2>Development</h2>
-                            <NavLink to="/sub4" onClick={() => location('contact')}>Contact</NavLink>
+                            <NavLink to="/contact" onClick={() => locationFunc('contact')}>Contact</NavLink>
                         </div>
                     </div>
                     <div className="imgBox">
@@ -98,7 +98,7 @@ const Main = ({gridProps, location, ref}: {gridProps: (timeline: gsap.core.Timel
                     <div className="textBox">
                         <span className="cover"></span>
                         <div className="textWrap">
-                            <NavLink to="/sub5" onClick={() => location('making')}>Making</NavLink>
+                            <NavLink to="/sub5" onClick={() => locationFunc('making')}>Making</NavLink>
                             <h2>남민우</h2>
                             <h2>NamMinwoo</h2>
                         </div>

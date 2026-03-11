@@ -11,11 +11,12 @@ const About = ({gridProps, ref}: {gridProps: (timeline: gsap.core.Timeline) => v
     const tl = useRef<gsap.core.Timeline | null>(null);
     const tl2 = useRef<gsap.core.Timeline | null>(null);
     const wrap = document.querySelector(".contentsBody");
+    const header = document.querySelector(".header");
 
     const [isAnimating, setIsAnimating] = useState(false);
     const [itemToggle,setItemToggle] = useState(true);
     const item = (itemToggle: boolean) => itemToggle ? ".itemWrap.item1" : ".itemWrap.item2";
-
+    
     const randomDelay = (ms: number) => Math.random() * ms / 1000;
     
     // 인트로 모션 함수
@@ -41,6 +42,7 @@ const About = ({gridProps, ref}: {gridProps: (timeline: gsap.core.Timeline) => v
         // 초기화 모션
         tl.current.addLabel("done", "clip+=1");
         tl.current.to(itemsWrap, {zIndex: 0, duration: 0}, "done");
+        tl.current.to(header, { opacity: 1, duration: 0.2, ease: "power2.inOut" }, "done");
         
         //page outro 모션 gridprops
         gridProps(tl.current);
@@ -158,12 +160,9 @@ const About = ({gridProps, ref}: {gridProps: (timeline: gsap.core.Timeline) => v
                     저는 퍼블리셔로서의 경험을 바탕으로<br/>
                     사용자에게 최상의 경험을 제공 하기 위해 노력하는 개발자입니다.<br/>
 <br/>
-                    프로젝트의 목표와 방향에 따라 최적화된 웹 서비스를 개발하기 위해<br/>
-                    동료 개발자들과의능동적인 커뮤니케이션이 필수라고 믿습니다.<br/>
-{/* <br/>
                     작업의 효율성과 생산성을 중요하게 생각하며<br/>
                     끊임없이 진화하는 IT 시장에 발맞춰 항상 새로운 지식을 습득하고 싶습니다.<br/>
-                    제 노력과 열정을 통해 뛰어난 웹 개발자로서 성장하고 싶습니다.<br/> */}
+                    제 노력과 열정을 통해 뛰어난 웹 개발자로서 성장하고 싶습니다.<br/>
                     </p>
                 </div>
             </div>

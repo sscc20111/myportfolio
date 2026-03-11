@@ -8,9 +8,11 @@ import 'swiper/css/effect-creative';
 import 'swiper/css/navigation';
 import '../styles/project.css';
 
-import grid1 from '../assets/images/Grid1.png';
-import grid2 from '../assets/images/Grid2.png';
-import grid3 from '../assets/images/Grid3.png';
+import thumbnail1 from '../assets/images/projects/thumbnail1.png';
+import thumbnail2 from '../assets/images/projects/thumbnail2.png';
+import thumbnail3 from '../assets/images/projects/thumbnail3.png';
+import thumbnail4 from '../assets/images/projects/thumbnail4.png';
+import thumbnail5 from '../assets/images/projects/thumbnail5.png';
 
 import Canvas from '../components/canvas/canvas';
 
@@ -26,50 +28,87 @@ type ProjectItem = {
 
 const Projects: ProjectItem[] = [
     {
+        cases: 'Work Project',
+        title: '충만법무법인',
+        period: '2022.07 - 2022.08',
+        role: 'Frontend / Publishing',
+        stack: ['PHP', 'MSQL', 'Fullpage.js', 'Swiper.js'],
+        summary: '법무법인 웹사이트 프로젝트로, Fullpage.js와 Swiper.js를 활용하여 사용자 경험을 향상시켰습니다.',
+        image: thumbnail1,
+    },
+    {
+        cases: 'Work Project',
+        title: '이안',
+        period: '2022.03 - 2022.05',
+        role: 'Frontend / Publishing',
+        stack: ['PHP', 'MSQL', 'SVG-animation'],
+        summary: 'SVG 애니메이션을 강조하여 브랜드의 아이덴티티를 시각적으로 표현하였습니다.',
+        image: thumbnail2,
+    },
+    {
+        cases: 'Work Project',
+        title: '휴콥(wow\'m)',
+        period: '2022.03 - 2022.05',
+        role: 'Frontend / Publishing',
+        stack: ['PHP', 'MSQL', 'Fullpage.js', 'Swiper.js'],
+        summary: 'fullpage.js의 유료 기능이였던 페럴렉스를 javascript로 직접 구현하여, 스크롤에 따른 이미지의 위치와 크기 변화를 통해 입체감을 주었습니다.',
+        image: thumbnail3,
+    },
+    {
+        cases: 'Work Project',
+        title: '무이림',
+        period: '2022.05 - 2022.06',
+        role: 'Frontend / Publishing',
+        stack: ['PHP', 'MSQL', 'Swiper.js'],
+        summary: '숙소의 정적인 이미지를 강조한 웹사이트 입니다. Swiper.js를 활용하여 사용자 경험을 향상시켰습니다.',
+        image: thumbnail4,
+    },
+    {
         cases: 'Portfolio Project',
-        title: 'Canvas.js',
-        period: '2023.10 - 2023.12',
-        role: 'Frontend',
-        stack: ['React Hooks', 'Canvas 2D API', 'GSAP', '수학'],
-        summary: '정적인 UI를 넘어, 프론트엔드에서 ‘시각적 경험(Visual Experience)’을 직접 구현하는 프로젝트입니다. 캔버스 애니메이션과 인터랙션을 활용하여, 각 프로젝트에 어울리는 독특한 시각적 효과를 구현하였습니다.',
-        image: grid1,
+        title: 'Cultural Life',
+        period: '',
+        role: 'Frontend / Backend',
+        stack: ['PHP', 'React', 'API', 'axios'],
+        summary: '공공데이터 포털에서 제공하는 API를 활용하여, 문화생활과 관련된 다양한 정보를 사용자에게 제공하는 웹 애플리케이션입니다. React를 사용하여 사용자 친화적인 인터페이스를 구현하였으며, axios를 통해 API와의 원활한 통신을 보장하였습니다.',
+        image: thumbnail5,
     },
     {
         cases: 'Portfolio Project',
         title: 'GuestBook',
-        period: '2023.10 - 2023.12',
+        period: '',
         role: 'Frontend / Backend',
-        stack: ['PHP', 'MySQL', 'axios', 'GSAP'],
-        summary: '백엔드 기술을 활용하여, 방문자들이 직접 메시지를 남길 수 있는 인터랙티브한 방명록 프로젝트입니다. GSAP을 활용한 애니메이션 효과로, 사용자 경험을 향상시키고, 각 메시지가 독특한 시각적 효과로 표현되도록 구현하였습니다.',
-        image: grid2,
+        stack: ['React', 'Supabase', 'GSAP', 'Masonry'],
+        summary: '사용자 인터랙션과 애니메이션을 강조한 게스트북 프로젝트입니다. React와 Supabase를 활용하여 실시간 데이터베이스와의 연동을 구현하였으며, GSAP과 Masonry를 사용하여 동적인 레이아웃과 애니메이션 효과를 제공하였습니다.',
+        image: thumbnail2,
     },
     {
-        cases: 'Toy Project',
-        title: 'Cultural Life',
-        period: '2024.08 - 2024.12',
-        role: 'Frontend / Backend',
-        stack: ['API', 'MySQL', 'axios'],
-        summary: '',
-        image: grid3,
+        cases: 'Portfolio Project',
+        title: 'Canvas.js',
+        period: '',
+        role: 'Frontend',
+        stack: ['React Hooks', 'Canvas 2D API', 'GSAP', '수학'],
+        summary: '정적인 UI를 넘어, 프론트엔드에서 ‘시각적 경험(Visual Experience)’을 직접 구현하는 프로젝트입니다. 캔버스 애니메이션과 인터랙션을 활용하여, 각 프로젝트에 어울리는 독특한 시각적 효과를 구현하였습니다.',
+        image: thumbnail1,
     },
     {
         cases: 'Toy Project',
         title: 'Todo List',
-        period: '2024.05 - 2024.07',
+        period: '',
         role: 'UI / React',
-        stack: ['Three.js', 'Vite', 'CSS Modules'],
-        summary: 'Immersive product narrative with flexible layouts and responsive grids.',
-        image: grid1,
+        stack: ['React', 'JavaScript', 'CSS'],
+        summary: '간단한 할 일 목록을 관리할 수 있는 Todo List 프로젝트입니다. React를 사용하여 사용자 인터페이스를 구현하였으며, 상태 관리를 통해 동적인 기능을 제공하였습니다.',
+        image: thumbnail4,
     },
     {
         cases: 'Toy Project',
         title: 'Card Game',
-        period: '2024.01 - 2024.03',
-        role: 'Design System',
+        period: '',
+        role: 'UI / React',
         stack: ['React', 'JavaScript'],
-        summary: 'Magazine-inspired layouts with layered backgrounds and interactive details.',
-        image: grid3,
+        summary: '사용자 인터랙션을 중심으로 한 카드 게임 프로젝트입니다. React를 활용하여 게임 로직과 UI를 구현하였으며, JavaScript를 통해 동적인 게임 기능을 제공하였습니다.',
+        image: thumbnail5,
     },
+
 ];
 
 
@@ -85,13 +124,13 @@ const Project = ({gridProps, ref}: {gridProps: (timeline: gsap.core.Timeline) =>
 
     const introMotion = () => {
         const wrap = document.querySelector(".projectBox");
+        const header = document.querySelector(".header");
         const item = document.querySelectorAll(".projectBox > div");
-
 
         tl.current = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.inOut" } });
         tl.current.fromTo(wrap, {background: "linear-gradient(to bottom left, #b89569, #b89569)"}, {background: "linear-gradient(to bottom left, #ecdbc4, #c2a680)"}, "start");
         tl.current.to(item, { opacity: 1 }, "start+=0.3");
-
+        tl.current.to(header, { opacity: 1, duration: 0.2, ease: "power2.inOut" }, "start+=0.3");
         gridProps(tl.current);
     
     };

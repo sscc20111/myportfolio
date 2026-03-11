@@ -1,26 +1,38 @@
+import { useRef, useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import { gsap } from "gsap";
 
 import './App.css'
+import './styles/common.css'
 
 import Header from './components/header'
-import { Main, About, Project, Guestbook, Sub4, Sub5 } from './pages/index';
-import { useRef, useState, useEffect } from 'react';
+import { Main, About, Project, Guestbook, Contact, Sub5 } from './pages/index';
+import {fetchPost} from './scripts/fetch';
+
+type Project = {
+    id: number;
+    content: string;
+    date: string;
+    password: string;
+};
 
 function App() {
   const location = useLocation();
   const nodeRef = useRef(null);
-  const motionRef = useRef<{width: string, height: string} | null>(null);
   const timeLineRef = useRef<gsap.core.Timeline | null>(null);
-
   const motionBoxRef = useRef<HTMLDivElement>(null);
+
+  const [guestbook, setGuestbook] = useState<Project[] | null>(null);
+
+  useEffect(() => {
+    fetchPost(setGuestbook);
+  }, []);
 
   // 페이지 이동 시 그리드 애니메이션 역재생
   const locationFunc = (size: string) => {
-    console.log('width: ', motionBoxRef.current?.offsetWidth, ' > ', wrapSize[size].width, 'height: ', motionBoxRef.current?.offsetHeight, ' > ', wrapSize[size].height);
-    // console.log(window.innerWidth + "px");
     const wrap = document.querySelector(".motionWrap");
+    const header = document.querySelector(".header");
     timeLineRef.current?.timeScale(2).reverse()
     .then(() => {
       gsap.fromTo(
@@ -30,6 +42,7 @@ function App() {
           duration: 0.2, 
           ease: "power2.inOut" }
       );
+      gsap.to(header, { opacity: 0, duration: 0.2, ease: "power2.inOut" });
     });
   }
 
@@ -43,14 +56,14 @@ function App() {
     about: {width: window.innerWidth + "px", height: window.innerHeight + "px"},
     project: {width: Math.min(1500, window.innerWidth * 0.8) + "px", height: Math.min(780, window.innerHeight * 0.8) + "px"},
     guestbook: {width: window.innerWidth + "px", height: window.innerHeight + "px"},
-    contact: {width: Math.min(800, window.innerWidth * 0.8) + "px", height: window.innerHeight + "px"},
+    contact: {width: Math.min(900, window.innerWidth * 0.9) + "px", height: Math.min(800, window.innerWidth * 0.9) + "px"},
     making: {width: Math.min(1000, window.innerWidth * 0.8) + "px", height: window.innerHeight + "px"},
   }
 
 
   return (
     <>
-        <Header location={locationFunc} />
+        <Header locationFunc={locationFunc} />
 
         <div className='contentsBody'>
           <SwitchTransition mode='out-in'>
@@ -62,11 +75,11 @@ function App() {
             >
               <div ref={nodeRef} className='router-wrapper '>
                 <Routes location={location}>
-                  <Route path="/" element={<Main gridProps={gridTest} location={locationFunc} ref={motionBoxRef} />} />
+                  <Route path="/" element={<Main gridProps={gridTest} locationFunc={locationFunc} ref={motionBoxRef} />} />
                   <Route path="/about" element={<About gridProps={gridTest} ref={motionBoxRef} />} />
                   <Route path="/project" element={<Project gridProps={gridTest} ref={motionBoxRef} />} />
-                  <Route path="/guestbook" element={<Guestbook gridProps={gridTest} ref={motionBoxRef} />} />
-                  {/* <Route path="/contact" element={<Sub4 gridProps={gridTest} ref={motionBoxRef} />} /> */}
+                  <Route path="/guestbook" element={<Guestbook gridProps={gridTest} ref={motionBoxRef} fetch={guestbook} />} />
+                  <Route path="/contact" element={<Contact gridProps={gridTest} ref={motionBoxRef} />} />
                   {/* <Route path="/making" element={<Sub5 gridProps={gridTest} ref={motionBoxRef} />} /> */}
                 </Routes>
               </div>
