@@ -77,11 +77,11 @@ function App() {
             >
               <div ref={nodeRef} className='router-wrapper '>
                 <Routes location={location}>
-                  <Route path="/myportfolio/main" element={<Main gridProps={gridTest} locationFunc={locationFunc} ref={motionBoxRef} />} />
-                  <Route path="/myportfolio/about" element={<About gridProps={gridTest} ref={motionBoxRef} />} />
-                  <Route path="/myportfolio/project" element={<Project gridProps={gridTest} ref={motionBoxRef} />} />
-                  <Route path="/myportfolio/guestbook" element={<Guestbook gridProps={gridTest} ref={motionBoxRef} fetch={guestbook} />} />
-                  <Route path="/myportfolio/contact" element={<Contact gridProps={gridTest} ref={motionBoxRef} />} />
+                  <Route path="/" element={<Main gridProps={gridTest} locationFunc={locationFunc} ref={motionBoxRef} />} />
+                  <Route path="/about" element={<About gridProps={gridTest} ref={motionBoxRef} />} />
+                  <Route path="/project" element={<Project gridProps={gridTest} ref={motionBoxRef} />} />
+                  <Route path="/guestbook" element={<Guestbook gridProps={gridTest} ref={motionBoxRef} fetch={guestbook} />} />
+                  <Route path="/contact" element={<Contact gridProps={gridTest} ref={motionBoxRef} />} />
                   {/* <Route path="/making" element={<Sub5 gridProps={gridTest} ref={motionBoxRef} />} /> */}
                 </Routes>
               </div>
