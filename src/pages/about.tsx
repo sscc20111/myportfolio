@@ -10,7 +10,7 @@ import icon2 from '../assets/images/phone.svg'
 const About = ({gridProps, ref}: {gridProps: (timeline: gsap.core.Timeline) => void, ref: React.Ref<HTMLDivElement>}) => {
     const tl = useRef<gsap.core.Timeline | null>(null);
     const tl2 = useRef<gsap.core.Timeline | null>(null);
-    const header = document.querySelector(".header");
+    const header = document.querySelector(".header"); 
 
     const [isAnimating, setIsAnimating] = useState(false);
     const [itemToggle,setItemToggle] = useState(true);
