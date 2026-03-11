@@ -10,15 +10,6 @@ const testInput: { x: number, y: number }[] = [
         { x: 478, y: 492 },
         { x: 626, y: 311 }
 ]
-const maxInput = () => {
-    // x와 y 값을 한 배열에 모음
-    const allCoords = testInput.flatMap(coord => [coord.x, coord.y]);
-
-    // 가장 큰 값 구하기
-    const maxInput = Math.max(...allCoords);
-
-    return maxInput
-};
 
 const canvasJs = (selecter: string): void => {
     const container: Element | null = document.querySelector(selecter);

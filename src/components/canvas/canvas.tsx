@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap';
 
 import { lerp, lerpAngle, CatchPoint, maxInputValue } from './calculate';
@@ -6,7 +6,6 @@ import InputSVG from './input';
 
 const Canvas = ({ images }: { images: string }) => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const [patternImg,setPatternImg] = useState(images);
 
     const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
     const currentPattern = useRef<CanvasPattern | null>(null);

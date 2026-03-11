@@ -66,9 +66,9 @@ const Main = ({gridProps, locationFunc, ref}: {gridProps: (timeline: gsap.core.T
                     <div className="textBox">
                         <span className="cover"></span>
                         <div className="textWrap">
-                            <NavLink to="/about" onClick={() => locationFunc('about')}>About</NavLink>
-                            <NavLink to="/project" onClick={() => locationFunc('project')}>Projects</NavLink>
-                            <NavLink to="/guestbook" onClick={() => locationFunc('guestbook')}>GuestBook</NavLink>
+                            <NavLink to="/myportfolio/about" onClick={() => locationFunc('about')}>About</NavLink>
+                            <NavLink to="/myportfolio/project" onClick={() => locationFunc('project')}>Projects</NavLink>
+                            <NavLink to="/myportfolio/guestbook" onClick={() => locationFunc('guestbook')}>GuestBook</NavLink>
                         </div>
                     </div>
                     <div className="imgBox">
@@ -84,7 +84,7 @@ const Main = ({gridProps, locationFunc, ref}: {gridProps: (timeline: gsap.core.T
                         <div className="textWrap">
                             <h2>Front-end</h2>
                             <h2>Development</h2>
-                            <NavLink to="/contact" onClick={() => locationFunc('contact')}>Contact</NavLink>
+                            <NavLink to="/myportfolio/contact" onClick={() => locationFunc('contact')}>Contact</NavLink>
                         </div>
                     </div>
                     <div className="imgBox">
@@ -98,7 +98,7 @@ const Main = ({gridProps, locationFunc, ref}: {gridProps: (timeline: gsap.core.T
                     <div className="textBox">
                         <span className="cover"></span>
                         <div className="textWrap">
-                            <NavLink to="/sub5" onClick={() => locationFunc('making')}>Making</NavLink>
+                            <NavLink to="/myportfolio/making" onClick={() => locationFunc('making')}>Making</NavLink>
                             <h2>남민우</h2>
                             <h2>NamMinwoo</h2>
                         </div>

@@ -4,8 +4,6 @@ import { EffectCreative, Navigation } from 'swiper/modules';
 import { gsap } from "gsap";
 
 import 'swiper/css';
-import 'swiper/css/effect-creative';
-import 'swiper/css/navigation';
 import '../styles/project.css';
 
 import thumbnail1 from '../assets/images/projects/thumbnail1.png';

@@ -7,7 +7,7 @@ import './App.css'
 import './styles/common.css'
 
 import Header from './components/header'
-import { Main, About, Project, Guestbook, Contact, Sub5 } from './pages/index';
+import { Main, About, Project, Guestbook, Contact } from './pages/index';
 import {fetchPost} from './scripts/fetch';
 
 type Project = {
@@ -27,6 +27,8 @@ function App() {
 
   useEffect(() => {
     fetchPost(setGuestbook);
+    console.log(location);
+    console.log('test');
   }, []);
 
   // 페이지 이동 시 그리드 애니메이션 역재생
@@ -75,11 +77,11 @@ function App() {
             >
               <div ref={nodeRef} className='router-wrapper '>
                 <Routes location={location}>
-                  <Route path="/" element={<Main gridProps={gridTest} locationFunc={locationFunc} ref={motionBoxRef} />} />
-                  <Route path="/about" element={<About gridProps={gridTest} ref={motionBoxRef} />} />
-                  <Route path="/project" element={<Project gridProps={gridTest} ref={motionBoxRef} />} />
-                  <Route path="/guestbook" element={<Guestbook gridProps={gridTest} ref={motionBoxRef} fetch={guestbook} />} />
-                  <Route path="/contact" element={<Contact gridProps={gridTest} ref={motionBoxRef} />} />
+                  <Route path="/myportfolio/main" element={<Main gridProps={gridTest} locationFunc={locationFunc} ref={motionBoxRef} />} />
+                  <Route path="/myportfolio/about" element={<About gridProps={gridTest} ref={motionBoxRef} />} />
+                  <Route path="/myportfolio/project" element={<Project gridProps={gridTest} ref={motionBoxRef} />} />
+                  <Route path="/myportfolio/guestbook" element={<Guestbook gridProps={gridTest} ref={motionBoxRef} fetch={guestbook} />} />
+                  <Route path="/myportfolio/contact" element={<Contact gridProps={gridTest} ref={motionBoxRef} />} />
                   {/* <Route path="/making" element={<Sub5 gridProps={gridTest} ref={motionBoxRef} />} /> */}
                 </Routes>
               </div>
