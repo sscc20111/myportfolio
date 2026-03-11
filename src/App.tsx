@@ -72,7 +72,7 @@ function App() {
             <CSSTransition
               key={location.pathname}
               timeout={{ enter: 500, exit: 1500 }}
-              classNames="motion"
+              classNames="motion" 
               nodeRef={nodeRef}
             >
               <div ref={nodeRef} className='router-wrapper '>
