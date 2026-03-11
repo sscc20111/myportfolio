@@ -82,7 +82,7 @@ function App() {
                   <Route path="/project" element={<Project gridProps={gridTest} ref={motionBoxRef} />} />
                   <Route path="/guestbook" element={<Guestbook gridProps={gridTest} ref={motionBoxRef} fetch={guestbook} />} />
                   <Route path="/contact" element={<Contact gridProps={gridTest} ref={motionBoxRef} />} />
-                  {/* <Route path="/making" element={<Making gridProps={gridTest} ref={motionBoxRef} />} /> */}
+                  <Route path="/making" element={<Making />} />
                 </Routes>
               </div>
             </CSSTransition>
