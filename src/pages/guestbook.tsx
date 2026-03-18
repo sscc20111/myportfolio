@@ -25,9 +25,9 @@ const Guestbook = ({gridProps, ref, fetch}: {gridProps: (timeline: gsap.core.Tim
 
     const introMotion = () => {
         const header = document.querySelector(".header");
-        const items = document.querySelectorAll(".guestbookBody .grid-item");
+        const items = document.querySelectorAll(".listItems .grid-item");
         const fadeItems = document.querySelectorAll(".guestbookHeader, .guestbookFooter");
-
+        const listItemsElement = document.querySelector<HTMLDivElement>(".listItems");
         // Timeline 생성
         tl.current = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.inOut" } });
 
@@ -37,7 +37,11 @@ const Guestbook = ({gridProps, ref, fetch}: {gridProps: (timeline: gsap.core.Tim
         });
 
         tl.current.addLabel("list", "start+=0.5");
-        tl.current.fromTo(items, { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.1 }, "list");
+        tl.current.fromTo(items, { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.1, onComplete: () => {
+            if (listItemsElement) {
+                listItemsElement.classList.add("done");
+            }
+        } }, "list");
         tl.current.to(header, { opacity: 1, duration: 0.2, ease: "power2.inOut" }, "list");
 
         gridProps(tl.current);
@@ -130,13 +134,12 @@ const Guestbook = ({gridProps, ref, fetch}: {gridProps: (timeline: gsap.core.Tim
     };
 
     // Masonry 레이아웃을 적용할 그리드 요소에 대한 참조
-    const gridRef = useRef<HTMLUListElement>(null);
+    const gridRef = useRef<HTMLDivElement>(null);
     const masonryRef = useRef<any>(null);
 
     // 프로젝트 데이터가 변경될 때마다 Masonry 레이아웃을 재계산
     useEffect(() => {
-        if (!gridRef.current) return;
-        if (!projects) return;
+        if (!gridRef.current || !projects) return;
 
         // Masonry 초기화
         masonryRef.current = new Masonry(gridRef.current, {
@@ -166,25 +169,30 @@ const Guestbook = ({gridProps, ref, fetch}: {gridProps: (timeline: gsap.core.Tim
                         <h2>GUESTBOOK</h2>
                         <p>Leave your comments.</p>
                     </div>
-                    <ul className="guestbookBody" ref={gridRef}>
-                        <li className="grid-sizer"></li>
-                        {projects?.map((item, index) => (
-                            <React.Fragment key={index}>
-                            {(index === 0 || index === 1 || index === 2) && 
-                            <li className="grid-item dumy" key={'dumy' + index}></li>}
-                            <li className="grid-item" key={index}>
-                                <p>{item.content}</p>
-                                <span>{item.id}, {getRelativeTime(item.date)}</span>
-                                {item.password === password && (
-                                    <div className='controlBox'>
-                                        <button className='editButton' onClick={() => updateMode(item.id, item.content, item.password)}><img src={editSVG} alt="edit icon" /></button>
-                                        <button className='deleteButton' onClick={() => deleteHandle(item.id)}><img src={deleteSVG} alt="delete icon" /></button>
+                    <div className="guestList">
+                        <div className="listItems" ref={gridRef}>
+                            {projects?.map((item, index) => (
+                                <React.Fragment key={index}>
+                                    {(index === 0) && 
+                                        <div className="grid-sizer"></div>
+                                    }
+                                    {(index === 0 || index === 1 || index === 2) && 
+                                        <div className="grid-item dumy" key={'dumy' + index}></div>
+                                    }
+                                    <div className="grid-item" key={index}>
+                                        <p>{item.content}</p>
+                                        <span>{item.id}, {getRelativeTime(item.date)}</span>
+                                        {item.password === password && (
+                                            <div className='controlBox'>
+                                                <button className='editButton' onClick={() => updateMode(item.id, item.content, item.password)}><img src={editSVG} alt="edit icon" /></button>
+                                                <button className='deleteButton' onClick={() => deleteHandle(item.id)}><img src={deleteSVG} alt="delete icon" /></button>
+                                            </div>
+                                        )}
                                     </div>
-                                )}
-                            </li>
-                            </React.Fragment>
-                        ))}
-                    </ul>
+                                </React.Fragment>
+                            ))}
+                        </div>
+                    </div>
                     <div className="guestbookFooter">
                         <textarea value={coment} placeholder="Your Comment" onChange={(e) => setComent(e.target.value)} />
                         <div className='inputBox'>

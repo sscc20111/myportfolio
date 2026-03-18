@@ -14,6 +14,7 @@ const Main = ({gridProps, locationFunc, ref}: {gridProps: (timeline: gsap.core.T
     const randomDelay = (ms: number) => Math.random() * ms / 1000;
     
     const introMotion = () => {
+        const header = document.querySelector(".header");
         const gridWrap = document.querySelector(".gridWrap");
         const gridBox = document.querySelectorAll(".gridBox");
         const textCover = document.querySelectorAll(".textBox .cover");
@@ -25,6 +26,7 @@ const Main = ({gridProps, locationFunc, ref}: {gridProps: (timeline: gsap.core.T
         tl.current = gsap.timeline({ defaults: { duration: 0.5, ease: "power2.inOut" } });
 
         // gap 모션
+        tl.current.to(header, { opacity: 0, duration: 0.2, ease: "power2.inOut" }, "gapMotion");
         tl.current.to(gridWrap, { gap: "20px" }, "gapMotion");
         tl.current.to(gridBox, { gap: "20px" }, "gapMotion");
 
