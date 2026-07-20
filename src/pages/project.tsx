@@ -6,11 +6,16 @@ import { gsap } from "gsap";
 import 'swiper/css';
 import '../styles/project.css';
 
+import linkIcon from '../assets/images/link.svg';
 import thumbnail1 from '../assets/images/projects/thumbnail1.png';
 import thumbnail2 from '../assets/images/projects/thumbnail2.png';
 import thumbnail3 from '../assets/images/projects/thumbnail3.png';
 import thumbnail4 from '../assets/images/projects/thumbnail4.png';
 import thumbnail5 from '../assets/images/projects/thumbnail5.png';
+import thumbnail6 from '../assets/images/projects/thumbnail6.png';
+import thumbnail7 from '../assets/images/projects/thumbnail7.png';
+import thumbnail8 from '../assets/images/projects/thumbnail8.png';
+import thumbnail9 from '../assets/images/projects/canvas.jpg';
 
 import Canvas from '../components/canvas/canvas';
 
@@ -22,6 +27,7 @@ type ProjectItem = {
     stack: string[];
     summary: string;
     image: string;
+    link: string;
 };
 
 const Projects: ProjectItem[] = [
@@ -33,6 +39,7 @@ const Projects: ProjectItem[] = [
         stack: ['PHP', 'MSQL', 'Fullpage.js', 'Swiper.js'],
         summary: '법무법인 웹사이트 프로젝트로, Fullpage.js와 Swiper.js를 활용하여 사용자 경험을 향상시켰습니다.',
         image: thumbnail1,
+        link: 'http://ccmlaw.1004home.kr/'
     },
     {
         cases: 'Work Project',
@@ -42,6 +49,7 @@ const Projects: ProjectItem[] = [
         stack: ['PHP', 'MSQL', 'SVG-animation'],
         summary: 'SVG 애니메이션을 강조하여 브랜드의 아이덴티티를 시각적으로 표현하였습니다.',
         image: thumbnail2,
+        link: 'http://iaan.1004home.kr/'
     },
     {
         cases: 'Work Project',
@@ -51,6 +59,7 @@ const Projects: ProjectItem[] = [
         stack: ['PHP', 'MSQL', 'Fullpage.js', 'Swiper.js'],
         summary: 'fullpage.js의 유료 기능이였던 페럴렉스를 javascript로 직접 구현하여, 스크롤에 따른 이미지의 위치와 크기 변화를 통해 입체감을 주었습니다.',
         image: thumbnail3,
+        link: 'http://wowm.1004home.kr/'
     },
     {
         cases: 'Work Project',
@@ -60,15 +69,17 @@ const Projects: ProjectItem[] = [
         stack: ['PHP', 'MSQL', 'Swiper.js'],
         summary: '숙소의 정적인 이미지를 강조한 웹사이트 입니다. Swiper.js를 활용하여 사용자 경험을 향상시켰습니다.',
         image: thumbnail4,
+        link: 'http://muirim.com/'
     },
     {
         cases: 'Portfolio Project',
         title: 'Cultural Life',
-        period: '',
+        period: 'http://nmwoo.info/cultural',
         role: 'Frontend / Backend',
         stack: ['PHP', 'React', 'API', 'axios'],
         summary: '공공데이터 포털에서 제공하는 API를 활용하여, 문화생활과 관련된 다양한 정보를 사용자에게 제공하는 웹 애플리케이션입니다. React를 사용하여 사용자 친화적인 인터페이스를 구현하였으며, axios를 통해 API와의 원활한 통신을 보장하였습니다.',
         image: thumbnail5,
+        link: ''
     },
     {
         cases: 'Portfolio Project',
@@ -77,7 +88,8 @@ const Projects: ProjectItem[] = [
         role: 'Frontend / Backend',
         stack: ['React', 'Supabase', 'GSAP', 'Masonry'],
         summary: '사용자 인터랙션과 애니메이션을 강조한 게스트북 프로젝트입니다. React와 Supabase를 활용하여 실시간 데이터베이스와의 연동을 구현하였으며, GSAP과 Masonry를 사용하여 동적인 레이아웃과 애니메이션 효과를 제공하였습니다.',
-        image: thumbnail2,
+        image: thumbnail6,
+        link: ''
     },
     {
         cases: 'Portfolio Project',
@@ -86,7 +98,8 @@ const Projects: ProjectItem[] = [
         role: 'Frontend',
         stack: ['React Hooks', 'Canvas 2D API', 'GSAP', '수학'],
         summary: '정적인 UI를 넘어, 프론트엔드에서 ‘시각적 경험(Visual Experience)’을 직접 구현하는 프로젝트입니다. 캔버스 애니메이션과 인터랙션을 활용하여, 각 프로젝트에 어울리는 독특한 시각적 효과를 구현하였습니다.',
-        image: thumbnail1,
+        image: thumbnail9,
+        link: ''
     },
     {
         cases: 'Toy Project',
@@ -95,7 +108,8 @@ const Projects: ProjectItem[] = [
         role: 'UI / React',
         stack: ['React', 'JavaScript', 'CSS'],
         summary: '간단한 할 일 목록을 관리할 수 있는 Todo List 프로젝트입니다. React를 사용하여 사용자 인터페이스를 구현하였으며, 상태 관리를 통해 동적인 기능을 제공하였습니다.',
-        image: thumbnail4,
+        image: thumbnail7,
+        link: 'https://sscc20111.github.io/todolist/'
     },
     {
         cases: 'Toy Project',
@@ -104,7 +118,8 @@ const Projects: ProjectItem[] = [
         role: 'UI / React',
         stack: ['React', 'JavaScript'],
         summary: '사용자 인터랙션을 중심으로 한 카드 게임 프로젝트입니다. React를 활용하여 게임 로직과 UI를 구현하였으며, JavaScript를 통해 동적인 게임 기능을 제공하였습니다.',
-        image: thumbnail5,
+        image: thumbnail8,
+        link: 'https://sscc20111.github.io/cardgame/'
     },
 
 ];
@@ -187,7 +202,10 @@ const Project = ({gridProps, ref}: {gridProps: (timeline: gsap.core.Timeline) =>
                             <SwiperSlide key={project.title}>
                                 <div className="textBox">
                                     <span className='cases'>{project.cases}</span>
-                                    <h2>{project.title}</h2>
+                                    <div className="titleWrap">
+                                        <h2>{project.title}</h2>
+                                        {project.link && <a href={project.link} target="_blank" rel="noopener noreferrer"><img src={linkIcon} alt="View Site" /></a>}
+                                    </div>
                                     <span className="duration">{project.period}</span>
                                     <p className="projectSummary">{project.summary}</p>
                                     <h3>{project.role}</h3>
@@ -200,10 +218,8 @@ const Project = ({gridProps, ref}: {gridProps: (timeline: gsap.core.Timeline) =>
                             </SwiperSlide>
                         ))}
                     </Swiper>
-                    <div className='navigationBtn'>
-                        <button ref={prevRef} className={"navBtn prevBtn" + (activeIndex === 0 ? " disabled" : "")}></button>
-                        <button ref={nextRef} className={"navBtn nextBtn" + (activeIndex === Projects.length - 1 ? " disabled" : "")}></button>
-                    </div>
+                    <button ref={prevRef} className={"navBtn prevBtn" + (activeIndex === 0 ? " disabled" : "")}></button>
+                    <button ref={nextRef} className={"navBtn nextBtn" + (activeIndex === Projects.length - 1 ? " disabled" : "")}></button>
                 </div>
             </div>
         </div>

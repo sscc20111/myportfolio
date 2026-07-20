@@ -181,7 +181,7 @@ const Guestbook = ({gridProps, ref, fetch}: {gridProps: (timeline: gsap.core.Tim
                                     }
                                     <div className="grid-item" key={index}>
                                         <p>{item.content}</p>
-                                        <span>{item.id}, {getRelativeTime(item.date)}</span>
+                                        <span>{getRelativeTime(item.date)}</span>
                                         {item.password === password && (
                                             <div className='controlBox'>
                                                 <button className='editButton' onClick={() => updateMode(item.id, item.content, item.password)}><img src={editSVG} alt="edit icon" /></button>
