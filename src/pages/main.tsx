@@ -100,7 +100,7 @@ const Main = ({gridProps, locationFunc, ref}: {gridProps: (timeline: gsap.core.T
                     <div className="textBox">
                         <span className="cover"></span>
                         <div className="textWrap">
-                            <NavLink to="/making" onClick={() => locationFunc('making')}>Making</NavLink>
+                            {/* <NavLink to="/making" onClick={() => locationFunc('making')}>Making</NavLink> */}
                             <h2>남민우</h2>
                             <h2>NamMinwoo</h2>
                         </div>

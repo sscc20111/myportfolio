@@ -32,54 +32,14 @@ type ProjectItem = {
 
 const Projects: ProjectItem[] = [
     {
-        cases: 'Work Project',
-        title: '충만법무법인',
-        period: '2022.07 - 2022.08',
-        role: 'Frontend / Publishing',
-        stack: ['PHP', 'MSQL', 'Fullpage.js', 'Swiper.js'],
-        summary: '법무법인 웹사이트 프로젝트로, Fullpage.js와 Swiper.js를 활용하여 사용자 경험을 향상시켰습니다.',
-        image: thumbnail1,
-        link: 'http://ccmlaw.1004home.kr/'
-    },
-    {
-        cases: 'Work Project',
-        title: '이안',
-        period: '2022.03 - 2022.05',
-        role: 'Frontend / Publishing',
-        stack: ['PHP', 'MSQL', 'SVG-animation'],
-        summary: 'SVG 애니메이션을 강조하여 브랜드의 아이덴티티를 시각적으로 표현하였습니다.',
-        image: thumbnail2,
-        link: 'http://iaan.1004home.kr/'
-    },
-    {
-        cases: 'Work Project',
-        title: '휴콥(wow\'m)',
-        period: '2022.03 - 2022.05',
-        role: 'Frontend / Publishing',
-        stack: ['PHP', 'MSQL', 'Fullpage.js', 'Swiper.js'],
-        summary: 'fullpage.js의 유료 기능이였던 페럴렉스를 javascript로 직접 구현하여, 스크롤에 따른 이미지의 위치와 크기 변화를 통해 입체감을 주었습니다.',
-        image: thumbnail3,
-        link: 'http://wowm.1004home.kr/'
-    },
-    {
-        cases: 'Work Project',
-        title: '무이림',
-        period: '2022.05 - 2022.06',
-        role: 'Frontend / Publishing',
-        stack: ['PHP', 'MSQL', 'Swiper.js'],
-        summary: '숙소의 정적인 이미지를 강조한 웹사이트 입니다. Swiper.js를 활용하여 사용자 경험을 향상시켰습니다.',
-        image: thumbnail4,
-        link: 'http://muirim.com/'
-    },
-    {
         cases: 'Portfolio Project',
         title: 'Cultural Life',
-        period: 'http://nmwoo.info/cultural',
+        period: '',
         role: 'Frontend / Backend',
-        stack: ['PHP', 'React', 'API', 'axios'],
+        stack: ['next.js', 'React', 'API', 'vercel', 'typescript'],
         summary: '공공데이터 포털에서 제공하는 API를 활용하여, 문화생활과 관련된 다양한 정보를 사용자에게 제공하는 웹 애플리케이션입니다. React를 사용하여 사용자 친화적인 인터페이스를 구현하였으며, axios를 통해 API와의 원활한 통신을 보장하였습니다.',
         image: thumbnail5,
-        link: ''
+        link: 'https://cultural-life-n4tpzhqi4-sscc20111s-projects.vercel.app/'
     },
     {
         cases: 'Portfolio Project',
@@ -120,7 +80,47 @@ const Projects: ProjectItem[] = [
         summary: '사용자 인터랙션을 중심으로 한 카드 게임 프로젝트입니다. React를 활용하여 게임 로직과 UI를 구현하였으며, JavaScript를 통해 동적인 게임 기능을 제공하였습니다.',
         image: thumbnail8,
         link: 'https://sscc20111.github.io/cardgame/'
+    },    {
+        cases: 'Work Project',
+        title: '충만법무법인',
+        period: '2022.07 - 2022.08',
+        role: 'Frontend / Publishing',
+        stack: ['PHP', 'MSQL', 'Fullpage.js', 'Swiper.js'],
+        summary: '법무법인 웹사이트 프로젝트로, Fullpage.js와 Swiper.js를 활용하여 사용자 경험을 향상시켰습니다.',
+        image: thumbnail1,
+        link: 'http://ccmlaw.1004home.kr/'
     },
+    {
+        cases: 'Work Project',
+        title: '이안',
+        period: '2022.03 - 2022.05',
+        role: 'Frontend / Publishing',
+        stack: ['PHP', 'MSQL', 'SVG-animation'],
+        summary: 'SVG 애니메이션을 강조하여 브랜드의 아이덴티티를 시각적으로 표현하였습니다.',
+        image: thumbnail2,
+        link: 'http://iaan.1004home.kr/'
+    },
+    {
+        cases: 'Work Project',
+        title: '휴콥(wow\'m)',
+        period: '2022.03 - 2022.05',
+        role: 'Frontend / Publishing',
+        stack: ['PHP', 'MSQL', 'Fullpage.js', 'Swiper.js'],
+        summary: 'fullpage.js의 유료 기능이였던 페럴렉스를 javascript로 직접 구현하여, 스크롤에 따른 이미지의 위치와 크기 변화를 통해 입체감을 주었습니다.',
+        image: thumbnail3,
+        link: 'http://wowm.1004home.kr/'
+    },
+    {
+        cases: 'Work Project',
+        title: '무이림',
+        period: '2022.05 - 2022.06',
+        role: 'Frontend / Publishing',
+        stack: ['PHP', 'MSQL', 'Swiper.js'],
+        summary: '숙소의 정적인 이미지를 강조한 웹사이트 입니다. Swiper.js를 활용하여 사용자 경험을 향상시켰습니다.',
+        image: thumbnail4,
+        link: 'http://muirim.com/'
+    },
+
 
 ];
 

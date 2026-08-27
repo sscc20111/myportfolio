@@ -12,7 +12,7 @@ const Header = ({locationFunc}: {locationFunc: (size: string) => void}) => {
                     <li><NavLink to="/project" onClick={() => locationFunc('project')} className={({ isActive }) => isActive ? "pointer-events-none active" : ""}>Projects</NavLink></li>
                     <li><NavLink to="/guestbook" onClick={() => locationFunc('guestbook')} className={({ isActive }) => isActive ? "pointer-events-none active" : ""}>Guestbook</NavLink></li>
                     <li><NavLink to="/contact" onClick={() => locationFunc('contact')} className={({ isActive }) => isActive ? "pointer-events-none active" : ""}>Contact</NavLink></li>
-                    <li><NavLink to="/making" onClick={() => locationFunc('making')} className={({ isActive }) => isActive ? "pointer-events-none active" : ""}>Making</NavLink></li>
+                    {/* <li><NavLink to="/making" onClick={() => locationFunc('making')} className={({ isActive }) => isActive ? "pointer-events-none active" : ""}>Making</NavLink></li> */}
                 </ul>
             </nav>
         </header>
