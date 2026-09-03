@@ -82,7 +82,10 @@ const Canvas = ({ images }: { images: string }) => {
         // 애니메이션 상태값
         //==========================
         let cycle = 0;
-        let cycleSpeed = 0.001; //임시
+        // [수정] cycleSpeed의 의미를 "프레임당 증가량" -> "ms당 증가량"으로 변경
+        // 기존 체감 속도(60Hz 기준 프레임당 0.001)와 맞추기 위해 (1000/60)으로 나눠서 보정
+        // 60Hz 기준: 0.001 * 60 = 0.06/초 와 동일한 속도가 나오도록 계산됨
+        let cycleSpeed = 0.001 / (1000 / 200); //임시 (ms 기준으로 변경됨, 필요시 값 재조정)
         let waveSpeed = 1.5; //임시
         let waveLength = 1; //임시
 
@@ -151,7 +154,8 @@ const Canvas = ({ images }: { images: string }) => {
         //==========================
         // 그리기 함수
         //==========================
-        const draw = () => {
+        // [수정] deltaTime(ms) 인자 추가 — 프레임 호출 횟수가 아닌 실제 경과 시간을 기반으로 cycle을 진행시키기 위함
+        const draw = (deltaTime: number) => {
             const points = Array.from({ length: totalPoints }, (_, i) => update(i));
             const first = points[0];
             const last = points[totalPoints - 1];
@@ -197,7 +201,9 @@ const Canvas = ({ images }: { images: string }) => {
             ctx.restore();
 
             // 사이클 업데이트
-            cycle = (cycle + cycleSpeed) % totalPoints;
+            // [수정] 프레임당 고정값(cycleSpeed) 증가 -> 경과 시간(deltaTime, ms) 기반 증가로 변경
+            // 이렇게 하면 60Hz든 120Hz든 1초에 진행되는 총량이 동일해짐 (기기 독립적인 속도)
+            cycle = (cycle + cycleSpeed * deltaTime) % totalPoints;
         };
 
         //==========================
@@ -227,11 +233,30 @@ const Canvas = ({ images }: { images: string }) => {
         // 애니메이션 루프
         //==========================
         let rafId = 0;
-        const animate = () => {
-            draw();
+        // [추가] 이전 프레임의 타임스탬프를 저장해서 deltaTime 계산에 사용
+        let lastTime: number | null = null;
+
+        // [수정] rAF가 전달하는 timestamp(ms) 인자를 받도록 변경
+        const animate = (time: number) => {
+            // [추가] 최초 실행 시 lastTime이 없으면 현재 시각으로 초기화 (첫 프레임 deltaTime 튐 방지)
+            if (lastTime === null) {
+                lastTime = time;
+            }
+
+            // [추가] 이전 프레임과의 시간 차이(ms) 계산
+            let deltaTime = time - lastTime;
+            lastTime = time;
+
+            // [추가] 탭이 백그라운드에 있다가 돌아오는 등 deltaTime이 비정상적으로 커지는 경우 방지 (튐 현상 방지)
+            const MAX_DELTA = 100; // 100ms 이상 차이나면 100ms로 클램프
+            if (deltaTime > MAX_DELTA) {
+                deltaTime = MAX_DELTA;
+            }
+
+            draw(deltaTime); // [수정] draw 호출 시 deltaTime 전달
             rafId = window.requestAnimationFrame(animate);
         };
-        animate();
+        rafId = window.requestAnimationFrame(animate); // [수정] 최초 호출도 rAF를 통해 timestamp를 받도록 변경 (animate() 직접 호출 X)
 
         return () => {
             window.removeEventListener('resize', resize);
