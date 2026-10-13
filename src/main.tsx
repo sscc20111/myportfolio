@@ -9,3 +9,7 @@ createRoot(document.getElementById('root')!).render(
       <App />
   </HashRouter>
 )
+
+if (import.meta.env.DEV) {
+  import('./dev/mountClaudePicker').then(m => m.mountClaudePicker())
+}
