@@ -12,6 +12,7 @@
 .mainpage .gridWrap .gridBox .textBox .cover {z-index: 0;}
 .mainpage .gridWrap .gridBox .textBox .textWrap {opacity: 0; position: relative; display: flex; flex-direction: column; justify-content: center; width: 100%; height: 100%;}
 .mainpage .gridWrap .gridBox .textBox .textWrap a {font-family: 'Gmarket'; display: block; padding: 0.4rem 0; font-size: 4.3rem; font-weight: 600; line-height: 1.4; color: #212529; transition: color 0.3s ease-in-out; cursor: pointer;}
+.mainpage .gridWrap .gridBox .textBox .textWrap a[href$="/guestbook"] {color: #2f9e44;}
 .mainpage .gridWrap .gridBox .textBox .textWrap a:hover {color: #958570;}
 .mainpage .gridWrap .gridBox .textBox .textWrap h2 {padding: 0.4rem 0; font-size: 4.3rem; font-weight: 300; font-family: 'Gmarket'; color: #212529;}
 .mainpage .gridWrap .gridBox:nth-child(2) .textBox .textWrap a {text-align: right;}
